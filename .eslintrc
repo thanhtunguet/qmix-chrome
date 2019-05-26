@@ -1,0 +1,67 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "webextensions": true
+  },
+  "globals": {
+    "chrome": true
+  },
+  "plugins": [
+    "flowtype",
+    "import",
+    "jsx-a11y",
+    "react"
+  ],
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "plugin:flowtype/recommended",
+    "plugin:import/recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": false
+    },
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src/",
+          "node_modules/"
+        ]
+      }
+    }
+  },
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "no-undef": [
+      "error",
+      {
+
+      }
+    ]
+  }
+}

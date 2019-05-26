@@ -1,0 +1,16 @@
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~antd/dist/antd.min.css';
+/* Hide ads */
+#ad_leftslot_container,
+#ad_topslot_b,
+#leaderboardHD {
+  display: none;
+  visibility: hidden;
+}
+/* Change cursor style for copyable elements */
+.x,
+.cf,
+.def,
+h2.h {
+  cursor: pointer;
+}
