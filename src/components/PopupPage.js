@@ -3,7 +3,7 @@
 import React from 'react';
 import LocaleProvider from 'antd/lib/locale-provider';
 import enUS from 'antd/lib/locale-provider/en_US';
-import {Container} from 'reactstrap';
+import Container from 'reactstrap/lib/Container';
 
 function PopupPage() {
   return (
