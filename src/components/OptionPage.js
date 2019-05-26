@@ -3,15 +3,16 @@
 import React from 'react';
 import LocaleProvider from 'antd/lib/locale-provider';
 import enUS from 'antd/lib/locale-provider/en_US';
+import Container from 'reactstrap/lib/Container';
 
 function OptionPage() {
   return (
     <LocaleProvider locale={enUS}>
-      <div>
+      <Container fluid>
         <h2>
           English Dictionaries
         </h2>
-      </div>
+      </Container>
     </LocaleProvider>
   );
 }
