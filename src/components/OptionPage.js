@@ -3,18 +3,20 @@
 import React from 'react';
 import LocaleProvider from 'antd/lib/locale-provider';
 import enUS from 'antd/lib/locale-provider/en_US';
-import Container from 'reactstrap/lib/Container';
+import {Col, Container, Row} from 'reactstrap';
 
-function OptionPage() {
+export function OptionPage() {
   return (
     <LocaleProvider locale={enUS}>
       <Container fluid>
-        <h2>
-          English Dictionaries
-        </h2>
+        <Row>
+          <Col>
+            <span className="h3">
+              English Dictionaries
+            </span>
+          </Col>
+        </Row>
       </Container>
     </LocaleProvider>
   );
 }
-
-export default OptionPage;

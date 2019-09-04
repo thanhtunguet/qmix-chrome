@@ -10,7 +10,12 @@ function copy(text: string) {
   notificationHelper.copiedNotify(text);
 }
 
-function addCopyExampleEvents() {
+function selfCopy() {
+  $('.phon').on('click', function () {
+    const text = `/${this.firstChild.nextSibling.nextSibling.nextSibling.data}/`;
+    copyToClipboard(text);
+    notificationHelper.copiedNotify(text);
+  });
   $('.x,.cf,.def,h2.h').on('click', function () {
     const text = $(this).text().trim();
     copy(text);
@@ -22,8 +27,8 @@ function addDownloadIPAButtons() {
     const elementWrapper = $(this);
     const path: string = elementWrapper.attr('data-src-mp3');
     const filename: string = path.split('/').splice(-1)[0];
-    elementWrapper.after(`<a class="sound audio_play_button mx-2 bg-success" href="${path}" download="${filename}">
-        <i class="fa fa-arrow-down"> </i>
+    elementWrapper.after(`<a class="ml-2" href="${path}" download="${filename}">
+        download mp3
     </a>`);
   });
 }
@@ -31,5 +36,5 @@ function addDownloadIPAButtons() {
 $(document).ready(function () {
   audioHelper.addAlertTone();
   addDownloadIPAButtons();
-  addCopyExampleEvents();
+  selfCopy();
 });
