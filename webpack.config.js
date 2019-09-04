@@ -9,9 +9,9 @@ module.exports = {
   mode: NODE_ENV,
   entry: {
     'options': './src/options.js',
-    'popup': './src/popup.js',
     'cambridge': './src/cambridge.js',
     'oxford': './src/oxford.js',
+    'background': './src/background.js',
   },
   output: {
     filename: '[name].js',

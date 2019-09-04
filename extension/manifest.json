@@ -1,7 +1,7 @@
 {
-  "name": "English Dictionaries - Tool for English teachers",
+  "name": "English Dictionaries",
   "short_name": "English Dictionaries",
-  "description": "English Dictionary tool for English teachers",
+  "description": "English Dictionaries - Tool for English teachers",
   "version": "0.1.1",
   "manifest_version": 2,
   "permissions": [
@@ -30,12 +30,11 @@
   ],
   "options_page": "options.html",
   "page_action": {
-    "default_popup": "popup.html",
     "default_icon": "icons/ed-32x32.png"
   },
   "background": {
     "scripts": [
-      "background.js"
+      "build/background.js"
     ],
     "persistent": false
   },
@@ -46,7 +45,7 @@
     "128": "icons/ed-128x128.png"
   },
   "web_accessible_resources": [
-    "popup.html",
+    "options.html",
     "audio/*.mp3"
   ]
 }
