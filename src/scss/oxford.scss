@@ -1,15 +1,5 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/utilities";
-@import '~font-awesome/css/font-awesome.min.css';
-@import '~antd/dist/antd.min.css';
+@import "~antd/lib/notification/style/index.css";
 
-/* Change cursor style for copyable elements */
-.x,
-.cf,
-.def,
-.phon,
-h2.h {
+.phon, .x, .def, .h {
   cursor: pointer;
 }

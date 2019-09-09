@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "helpers": [
+        "src/helpers"
+      ]
+    },
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": false,
+    "target": "es3",
+    "moduleResolution": "node",
+    "outDir": "extension/build",
+    "types": [
+      "node",
+      "chrome",
+      "jest"
+    ],
+    "lib": [
+      "dom",
+      "es6",
+      "es2020"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "jsx": "react",
+    "inlineSourceMap": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

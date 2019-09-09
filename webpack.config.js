@@ -1,27 +1,28 @@
-const path = require('path');
-// const webpackNodeExternals = require('webpack-node-externals');
-
-const {
-  NODE_ENV = 'development',
-} = process.env;
-
+const {resolve} = require("path");
 module.exports = {
-  mode: NODE_ENV,
   entry: {
-    'options': './src/options.js',
-    'cambridge': './src/cambridge.js',
-    'oxford': './src/oxford.js',
-    'background': './src/background.js',
+    "cambridge": "./src/cambridge.tsx",
+    "oxford": "./src/oxford.tsx",
+    "options": "./src/options.tsx",
+    "background": "./src/background.tsx",
   },
+  plugins: [],
   output: {
-    filename: '[name].js',
-    path: path.resolve('extension', 'build'),
+    path: resolve("extension", "build"),
+    filename: "[name].js",
+  },
+  resolve: {
+    extensions: [
+      ".ts",
+      ".tsx",
+      ".js",
+    ],
   },
   module: {
     rules: [
       {
-        test: /\.js?$/,
-        loader: 'babel-loader',
+        test: /\.tsx?$/,
+        loader: "ts-loader",
       },
       {
         test: /\.s?css$/,
@@ -39,15 +40,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    modules: [
-      path.resolve('src'),
-      path.resolve('node_modules'),
-    ],
-  },
-  devtool: 'source-map',
-  target: 'web',
-  // externals: [
-  //   webpackNodeExternals(),
-  // ],
+  mode: process.env.NODE_ENV,
+  devtool: "source-map",
 };

@@ -1,9 +1,16 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~font-awesome/css/font-awesome.min.css';
-@import '~antd/dist/antd.min.css';
+/**
+ * Ant Design
+ */
+@import "~antd/lib/notification/style/index.css";
+@import "~antd/lib/button/style/index.css";
+/**
+ * Bootstrap utilities
+ */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/utilities";
 
-/* Change cursor style for copyable elements */
-span.hw,
-span.ipa {
+.ipa, .hw {
   cursor: pointer;
 }

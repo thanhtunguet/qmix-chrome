@@ -5,7 +5,10 @@
   "version": "0.1.1",
   "manifest_version": 2,
   "permissions": [
+    "tabs",
     "activeTab",
+    "notifications",
+    "downloads",
     "clipboardWrite",
     "https://dictionary.cambridge.org/**",
     "https://www.oxfordlearnersdictionaries.com/**"
@@ -45,7 +48,10 @@
     "128": "icons/ed-128x128.png"
   },
   "web_accessible_resources": [
-    "options.html",
-    "audio/*.mp3"
+    "audio/*.mp3",
+    "build/*.js",
+    "build/*.js.map",
+    "static/",
+    "icons/"
   ]
 }
