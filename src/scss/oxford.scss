@@ -1,4 +1,16 @@
+/**
+ * Ant Design
+ */
+@import "~antd/lib/button/style/index.css";
 @import "~antd/lib/notification/style/index.css";
+
+/**
+ * Bootstrap utilities
+ */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/utilities";
 
 .phon, .x, .def, .h {
   cursor: pointer;

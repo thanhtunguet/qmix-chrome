@@ -1,83 +1,64 @@
-import * as copy from 'copy-to-clipboard';
+import {CloudDownloadOutlined} from '@ant-design/icons';
 import React from 'react';
-import notification from './helpers/notification';
-import './scss/cambridge.scss';
+import ReactDOM from 'react-dom';
+import {copy} from 'src/helpers/copy';
+import 'src/scss/cambridge.scss';
 
-document
-  .querySelectorAll('.ipa')
-  .forEach((ipa: HTMLSpanElement) => {
-    ipa.addEventListener('click', function () {
-      const text: string = `/${this.innerText}/`;
-      copy(text);
-      return notification.success({
-        message: 'Text copied',
-        description: `Copied ${text} to clipboard. Ready to paste`,
-      });
-    });
-  });
+// eslint-disable-next-line no-console
+console.clear();
 
-document
-  .querySelectorAll('.hw')
-  .forEach((headWord: HTMLSpanElement) => {
-    headWord.addEventListener('click', function () {
-      const text: string = this.innerText;
-      copy(text);
-      return notification.success({
-        message: 'Text copied',
-        description: `Copied ${text} to clipboard. Ready to paste`,
-      });
-    });
+document.querySelectorAll('.ipa').forEach((ipa: HTMLSpanElement) => {
+  ipa.addEventListener('click', async function () {
+    const text: string = `/${this.innerText}/`;
+    await copy(text);
   });
+});
 
-document
-  .querySelectorAll('.eg')
-  .forEach((example: HTMLSpanElement) => {
-    const button: HTMLButtonElement = document.createElement('button');
-    button.type = 'button';
-    button.className = 'ant-btn ant-btn-sm ant-btn-primary ml-2';
-    button.innerText = 'Copy';
-    button.addEventListener('click', function () {
-      const text: string = example.innerText;
-      copy(text);
-      return notification.success({
-        message: 'Text copied',
-        description: `Copied ${text} to clipboard. Ready to paste`,
-      });
-    });
-    example.parentElement.appendChild(button);
+document.querySelectorAll('.hw').forEach((headWord: HTMLSpanElement) => {
+  headWord.addEventListener('click', async function () {
+    const text: string = this.innerText;
+    await copy(text);
   });
+});
 
-document
-  .querySelectorAll('.def')
-  .forEach((definition: HTMLSpanElement) => {
-    const button: HTMLButtonElement = document.createElement('button');
-    button.type = 'button';
-    button.className = 'ant-btn ant-btn-sm ant-btn-primary ml-2';
-    button.innerText = 'Copy';
-    button.addEventListener('click', function () {
-      const text: string = definition.innerText.replace(':', '');
-      copy(text);
-      return notification.success({
-        message: 'Text copied',
-        description: `Copied ${text} to clipboard. Ready to paste`,
-      });
-    });
-    definition.parentElement.appendChild(button);
+document.querySelectorAll('.eg').forEach((example: HTMLSpanElement) => {
+  const button: HTMLButtonElement = document.createElement('button');
+  button.type = 'button';
+  button.className = 'ant-btn ant-btn-sm ant-btn-primary ml-2';
+  button.innerText = 'Copy';
+  button.addEventListener('click', async function () {
+    const text: string = example.innerText;
+    await copy(text);
   });
+  example.parentElement.appendChild(button);
+});
 
-document
-  .querySelectorAll('.circle.circle-btn.sound.audio_play_button')
-  .forEach((ipaButton: HTMLSpanElement) => {
-    const url: string = `https://dictionary.cambridge.org${ipaButton.getAttribute('data-src-mp3')}`;
-    const a: HTMLAnchorElement = document.createElement('a');
-    a.setAttribute('role', 'button');
-    a.className = 'circle circle-btn ml-1';
-    a.href = url;
-    a.download = url
-      .split('/')
-      .splice(-1)[0];
-    const icon: HTMLElement = document.createElement('i');
-    icon.className = 'fcdo fcdo-arrow-down';
-    a.appendChild(icon);
-    ipaButton.parentElement.appendChild(a);
+document.querySelectorAll('.def').forEach((definition: HTMLSpanElement) => {
+  const button: HTMLButtonElement = document.createElement('button');
+  button.type = 'button';
+  button.className = 'ant-btn ant-btn-sm ant-btn-primary ml-2';
+  button.innerText = 'Copy';
+  button.addEventListener('click', async function () {
+    const text: string = definition.innerText.replace(':', '');
+    await copy(text);
   });
+  definition.parentElement.appendChild(button);
+});
+
+const audioElements: HTMLAudioElement[] = Object.values(
+  document.getElementsByTagName('audio'),
+);
+
+for (const audioElement of audioElements) {
+  const mp3Source: HTMLSourceElement = audioElement
+    .children[0] as HTMLSourceElement;
+  const url: string = `${mp3Source.src}`;
+  const a: HTMLAnchorElement = document.createElement('a');
+  a.setAttribute('role', 'button');
+  a.className = 'mx-1';
+  a.href = url;
+  a.download = url.split('/').splice(-1)[0];
+  audioElement.parentElement.parentElement.appendChild(a);
+
+  ReactDOM.render(<CloudDownloadOutlined />, a);
+}

@@ -1,13 +1,12 @@
 const alertTone: HTMLAudioElement = document.createElement('audio');
 
-const source: HTMLSourceElement = document.createElement('source');
+const source: HTMLSourceElement = document.createElement('source', {});
 source.src = chrome.extension.getURL('audio/iphone_sms_original.mp3');
+source.id = 'alert-tone';
 
 alertTone.appendChild(source);
-document.body.appendChild(alertTone);
+document.body.append(alertTone);
 
-export function ring(): void {
-  alertTone.play()
-    .then(() => {
-    });
+export async function ring(): Promise<void> {
+  await alertTone.play();
 }

@@ -1,15 +1,16 @@
 /**
  * Ant Design
  */
-@import "~antd/lib/notification/style/index.css";
-@import "~antd/lib/button/style/index.css";
+@import "../../node_modules/antd/lib/button/style/index.css";
+@import "../../node_modules/antd/lib/notification/style/index.css";
+
 /**
  * Bootstrap utilities
  */
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/utilities";
 
 .ipa, .hw {
   cursor: pointer;

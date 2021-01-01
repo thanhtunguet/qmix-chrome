@@ -1,45 +1,47 @@
-const {resolve} = require("path");
+const {resolve} = require('path');
+const nameof = require('ts-nameof');
+
 module.exports = {
   entry: {
-    "cambridge": "./src/cambridge.tsx",
-    "oxford": "./src/oxford.tsx",
-    "options": "./src/options.tsx",
-    "background": "./src/background.tsx",
+    cambridge: './src/cambridge.tsx',
+    oxford: './src/oxford.tsx',
+    options: './src/options.tsx',
+    background: './src/background.tsx',
   },
-  plugins: [],
   output: {
-    path: resolve("extension", "build"),
-    filename: "[name].js",
+    path: resolve('extension', 'build'),
+    publicPath: '',
+    filename: '[name].js',
   },
   resolve: {
-    extensions: [
-      ".ts",
-      ".tsx",
-      ".js",
-    ],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'],
+    alias: {
+      src: resolve(__dirname, 'src'),
+    },
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: "ts-loader",
+        loader: 'ts-loader',
+        options: {
+          getCustomTransformers: () => {
+            return {
+              before: [nameof],
+            };
+          },
+        },
       },
       {
         test: /\.s?css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|gif|svg|jpg|jpeg|eot|woff|woff2|ttf)$/,
-        use: [
-          'file-loader',
-        ],
+        use: ['file-loader'],
       },
     ],
   },
   mode: process.env.NODE_ENV,
-  devtool: "source-map",
+  devtool: 'source-map',
 };

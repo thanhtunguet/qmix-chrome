@@ -1,15 +1,10 @@
 {
   "name": "English Dictionaries",
   "short_name": "English Dictionaries",
-  "description": "English Dictionaries - Tool for English teachers",
-  "version": "0.1.1",
+  "description": "English Dictionaries - A friend of English teachers",
+  "version": "0.1.2",
   "manifest_version": 2,
   "permissions": [
-    "tabs",
-    "activeTab",
-    "notifications",
-    "downloads",
-    "clipboardWrite",
     "https://dictionary.cambridge.org/**",
     "https://www.oxfordlearnersdictionaries.com/**"
   ],
@@ -51,7 +46,7 @@
     "audio/*.mp3",
     "build/*.js",
     "build/*.js.map",
-    "static/",
-    "icons/"
+    "icons/",
+    "options.html"
   ]
 }

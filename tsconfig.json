@@ -1,36 +1,50 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "helpers": [
-        "src/helpers"
-      ]
-    },
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": false,
-    "target": "es3",
+    "experimentalDecorators": true,
+    "inlineSourceMap": true,
+    "jsx": "react",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "extension/build",
+    "paths": {
+      "src/*": [
+        "./src/*"
+      ],
+      "package.json": [
+        "./package.json"
+      ]
+    },
+    "resolveJsonModule": true,
+    "target": "ES3",
+    "typeRoots": [
+      "./node_modules/@types/"
+    ],
     "types": [
       "node",
       "chrome",
       "jest"
-    ],
-    "lib": [
-      "dom",
-      "es6",
-      "es2020"
-    ],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "jsx": "react",
-    "inlineSourceMap": true
+    ]
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "extension",
+    ".idea",
+    ".git",
+    "README.md"
+  ],
+  "include": [
+    "src/"
   ]
 }
