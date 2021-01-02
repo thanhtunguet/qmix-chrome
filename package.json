@@ -1,7 +1,25 @@
 {
   "name": "@thanhtunguet/english-dictionaries",
   "description": "English Dictionaries: Cambridge, Oxford, Oxford Advanced",
+  "version": "1.0.1",
   "license": "MIT",
+  "repository": {
+    "url": "git@github.com:thanhtunguet/english-dictionaries.git",
+    "type": "git"
+  },
+  "author": {
+    "name": "Thanh Tùng",
+    "email": "ht@thanhtunguet.info",
+    "url": "https://thanhtunguet.info"
+  },
+  "maintainers": [
+    {
+      "name": "Thanh Tùng",
+      "email": "ht@thanhtunguet.info",
+      "url": "https://thanhtunguet.info"
+    }
+  ],
+  "private": true,
   "scripts": {
     "watch-ts": "NODE_ENV=development webpack --watch",
     "build-ts": "NODE_ENV=production webpack",
