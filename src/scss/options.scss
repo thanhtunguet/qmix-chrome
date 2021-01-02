@@ -1,3 +1,10 @@
 @import "../../node_modules/antd/dist/antd.min.css";
 @import "../../node_modules/@coreui/coreui/dist/css/coreui.min.css";
 @import "../../node_modules/@coreui/icons/css/all.min.css";
+
+.screenshot {
+  width: 100%;
+  height: auto;
+
+  align-self: center;
+}

@@ -3,3 +3,13 @@
 .ipa, .hw {
   cursor: pointer;
 }
+
+iframe {
+  display: none;
+  visibility: hidden;
+}
+
+#rightcol-ar2 {
+  display: none!important;
+  visibility: hidden!important;
+}

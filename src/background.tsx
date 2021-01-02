@@ -1,16 +1,10 @@
-// Background script
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Help from 'src/components/Help';
+import 'src/scss/options.scss';
 
-import {ExtensionData} from 'src/types/ExtensionData';
+function BackgroundPage() {
+  return <Help />;
+}
 
-chrome.storage.local.get((data: ExtensionData) => {
-  if (
-    typeof data?.numberOfDownloads !== 'number' ||
-    typeof data.numberOfClicks !== 'number'
-  ) {
-    const initializeData: ExtensionData = {
-      numberOfClicks: 0,
-      numberOfDownloads: 0,
-    };
-    chrome.storage.local.set(initializeData);
-  }
-});
+ReactDOM.render(<BackgroundPage />, document.getElementById('root'));
