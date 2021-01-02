@@ -6,9 +6,10 @@
     "watch-ts": "NODE_ENV=development webpack --watch",
     "build-ts": "NODE_ENV=production webpack",
     "start": "run-p watch-ts",
-    "build": "run-s build-ts",
+    "build": "run-s build-ts archive",
     "prestart": "rm -rf extension/build/**",
-    "prebuild": "rm -rf extension/build/**"
+    "prebuild": "rm -rf extension/build/**",
+    "archive": "mkdir -p dist/ && zip dist/main.crx -r extension/**"
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
