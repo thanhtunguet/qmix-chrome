@@ -1,6 +1,6 @@
 import {CloudDownloadOutlined} from '@ant-design/icons';
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDOM from 'react-dom';
 import {copy} from 'src/helpers/copy';
 import 'src/scss/oxford.scss';
 
@@ -21,14 +21,14 @@ document
   .forEach((ipaButton: HTMLSpanElement) => {
     const url: string = ipaButton.getAttribute('data-src-mp3');
 
-    const a: HTMLAnchorElement = document.createElement('a');
+    const anchor: HTMLAnchorElement = document.createElement('a');
 
-    a.setAttribute('role', 'button');
-    a.href = url;
-    a.download = url.split('/').splice(-1)[0];
-    a.className = 'mx-1';
+    anchor.setAttribute('role', 'button');
+    anchor.href = url;
+    anchor.download = url.split('/').splice(-1)[0];
+    anchor.className = 'mx-2';
 
-    ipaButton.parentElement.appendChild(a);
+    ipaButton.parentElement.appendChild(anchor);
 
-    render(<CloudDownloadOutlined />, a);
+    ReactDOM.render(<CloudDownloadOutlined />, anchor);
   });

@@ -23,9 +23,11 @@ document.querySelectorAll('.hw').forEach((headWord: HTMLSpanElement) => {
 
 document.querySelectorAll('.eg').forEach((example: HTMLSpanElement) => {
   const button: HTMLButtonElement = document.createElement('button');
+
   button.type = 'button';
   button.className = 'ant-btn ant-btn-sm ant-btn-primary ml-2';
   button.innerText = 'Copy';
+
   button.addEventListener('click', async function () {
     const text: string = example.innerText;
     await copy(text);
@@ -54,6 +56,7 @@ for (const audioElement of audioElements) {
     .children[0] as HTMLSourceElement;
   const url: string = `${mp3Source.src}`;
   const a: HTMLAnchorElement = document.createElement('a');
+
   a.setAttribute('role', 'button');
   a.className = 'mx-1';
   a.href = url;
