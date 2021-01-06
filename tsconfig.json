@@ -3,8 +3,6 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "declaration": true,
-    "emitDeclarationOnly": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": false,
     "experimentalDecorators": true,

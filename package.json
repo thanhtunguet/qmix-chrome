@@ -1,7 +1,7 @@
 {
   "name": "@thanhtunguet/english-dictionaries",
   "description": "English Dictionaries: Cambridge, Oxford, Oxford Advanced",
-  "version": "1.0.1",
+  "version": "0.1.2",
   "license": "MIT",
   "repository": {
     "url": "git@github.com:thanhtunguet/english-dictionaries.git",
@@ -27,7 +27,7 @@
     "build": "run-s build-ts archive",
     "prestart": "rm -rf extension/build/**",
     "prebuild": "rm -rf extension/build/**",
-    "archive": "mkdir -p dist/ && zip dist/main.crx -r extension/**"
+    "archive": "rm -rf dist/ && mkdir -p dist/ && zip dist/main.zip -r extension/"
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
