@@ -1,6 +1,9 @@
-node_modules/
+
 .idea/
+node_modules/
 build/
-extension/build/
 dist/
+extension/build/
+.env
 yarn.lock
+yarn-error.log

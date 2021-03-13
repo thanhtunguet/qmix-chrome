@@ -1,6 +1,6 @@
-import {Dictionary} from 'src/core/Dictionary';
+import {AbstractDictionary} from 'src/core/AbstractDictionary';
 
-export class CambridgeDictionary extends Dictionary {
+export class CambridgeDictionary extends AbstractDictionary {
   public findIpaUrl(audioElement: HTMLAudioElement) {
     const mp3Source: HTMLSourceElement = audioElement
       .children[0] as HTMLSourceElement;

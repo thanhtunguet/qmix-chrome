@@ -7,7 +7,8 @@
     "esModuleInterop": false,
     "experimentalDecorators": true,
     "inlineSourceMap": true,
-    "jsx": "react",
+    "isolatedModules": false,
+    "jsx": "react-jsx",
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -25,14 +26,9 @@
       ]
     },
     "resolveJsonModule": true,
-    "target": "ES3",
+    "target": "ES5",
     "typeRoots": [
       "./node_modules/@types/"
-    ],
-    "types": [
-      "node",
-      "chrome",
-      "jest"
     ]
   },
   "exclude": [

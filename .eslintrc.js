@@ -1,14 +1,17 @@
 module.exports = {
   root: true,
-  extends: ['@react-native-community'],
+  extends: '@react-native-community',
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'react-hooks'],
   env: {
     browser: true,
     webextensions: true,
+    node: true,
+  },
+  globals: {
+    nameof: true,
   },
   rules: {
-    indent: ['error', 2],
     'no-console': 'error',
     'no-shadow': 'off',
     'no-array-constructor': 'error',
@@ -26,7 +29,5 @@ module.exports = {
     'no-useless-concat': 'error',
     semi: ['error', 'always'],
     'comma-dangle': ['error', 'always-multiline'],
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
   },
 };

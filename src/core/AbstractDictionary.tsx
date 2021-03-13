@@ -1,8 +1,10 @@
-import {CloudDownloadOutlined} from '@ant-design/icons';
+import CloudDownloadOutlined from '@ant-design/icons/CloudDownloadOutlined';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export abstract class Dictionary {
+export abstract class AbstractDictionary {
+  public abstract findIpaUrl(element: HTMLElement);
+
   public createIpaDownloadLink(
     url: string,
     filename?: string,
@@ -27,6 +29,4 @@ export abstract class Dictionary {
 
     return a;
   }
-
-  public abstract findIpaUrl(element: HTMLElement);
 }

@@ -1,10 +1,14 @@
+// options page
+
+import 'src/scss/options.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Help from 'src/components/Help';
-import 'src/scss/options.scss';
+import {HashRouter} from 'react-router-dom';
+import ExtensionForm from './components/ExtensionForm/ExtensionForm';
 
-function OptionPage() {
-  return <Help />;
-}
-
-ReactDOM.render(<OptionPage />, document.getElementById('root'));
+ReactDOM.render(
+  <HashRouter>
+    <ExtensionForm />
+  </HashRouter>,
+  document.getElementById('root'),
+);

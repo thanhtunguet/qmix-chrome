@@ -1,7 +1,38 @@
 const {resolve} = require('path');
 const nameof = require('ts-nameof');
+const WebpackObfuscator = require('webpack-obfuscator');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const mode = process.env.NODE_ENV || 'development';
+
+let plugins = [
+  new webpack.EnvironmentPlugin({
+    LICENSE_SERVER: process.env.LICENSE_SERVER,
+  }),
+];
+
+if (mode !== 'development') {
+  plugins = [
+    ...plugins,
+    new WebpackObfuscator(
+      {
+        rotateStringArray: true,
+        numbersToExpressions: true,
+        splitStrings: true,
+      },
+      [],
+    ),
+  ];
+}
 
 module.exports = {
+  mode,
+  plugins,
+  externals: [],
+  devtool: mode === 'development' ? 'source-map' : undefined,
   entry: {
     cambridge: './src/cambridge.tsx',
     oxford: './src/oxford.tsx',
@@ -10,14 +41,7 @@ module.exports = {
   },
   output: {
     path: resolve('extension', 'build'),
-    publicPath: '',
     filename: '[name].js',
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'],
-    alias: {
-      src: resolve(__dirname, 'src'),
-    },
   },
   module: {
     rules: [
@@ -42,6 +66,10 @@ module.exports = {
       },
     ],
   },
-  mode: process.env.NODE_ENV,
-  devtool: 'source-map',
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'],
+    alias: {
+      src: resolve(__dirname, 'src'),
+    },
+  },
 };

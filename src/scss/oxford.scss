@@ -1,5 +1,10 @@
-@import "common";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~antd/dist/antd.min.css";
 
-.phon, .x, .def, .h, .headword {
+.phon,
+.x,
+.def,
+.h,
+.headword {
   cursor: pointer;
 }
