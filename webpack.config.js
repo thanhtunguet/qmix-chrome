@@ -8,24 +8,10 @@ dotenv.config();
 
 const mode = process.env.NODE_ENV || 'development';
 
-let plugins = [
-  new webpack.EnvironmentPlugin({
-    LICENSE_SERVER: process.env.LICENSE_SERVER,
-  }),
-];
+let plugins = [new webpack.EnvironmentPlugin({})];
 
 if (mode !== 'development') {
-  plugins = [
-    ...plugins,
-    new WebpackObfuscator(
-      {
-        rotateStringArray: true,
-        numbersToExpressions: true,
-        splitStrings: true,
-      },
-      [],
-    ),
-  ];
+  plugins = [...plugins, new WebpackObfuscator({}, [])];
 }
 
 module.exports = {
