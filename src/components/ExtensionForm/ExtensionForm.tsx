@@ -5,9 +5,9 @@ import Button from 'antd/lib/button';
 import Tag from 'antd/lib/tag';
 import React, {FC, PropsWithChildren, ReactElement} from 'react';
 import {identityService} from 'src/services/identity-service';
-import './ExtensionForm.scss';
 import {browserService} from 'src/services/browser-service';
 import {licenseService} from 'src/services/license-service';
+import './ExtensionForm.scss';
 
 const layout = {
   labelCol: {span: 8},

@@ -1,3 +1,4 @@
+import {License} from '@english-extension/models';
 import firebase from 'src/config/firebase';
 import {localRepository} from 'src/repositories/local-repository';
 import {browserService} from 'src/services/browser-service';
@@ -12,14 +13,14 @@ export class LicenseService {
       ]);
       const result = await firebase
         .database()
-        .ref(`/users/${id}/licenses/`)
+        .ref(`/licenses/${id}/${fingerprint}/`)
         .get();
-      const licenses: {
-        [key: number]: string;
-      } = JSON.parse(JSON.stringify(result));
-      const isValidLicense: boolean = Object.values(licenses).includes(
-        fingerprint,
-      );
+      const license: License = JSON.parse(JSON.stringify(result));
+      const isValidLicense: boolean =
+        typeof license === 'object' &&
+        license !== null &&
+        typeof license?.expiredAt === 'number' &&
+        license.expiredAt > new Date().getTime();
       await localRepository.setItem(
         nameof(localRepository.isValid),
         isValidLicense,

@@ -1,7 +1,7 @@
 {
   "name": "english-extension",
   "description": "English Dictionaries: Cambridge, Oxford, Oxford Advanced",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "repository": {
     "url": "git@github.com:thanhtunguet/english-dictionaries.git",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
+    "@english-extension/models": "^0.0.1",
     "@fingerprintjs/fingerprintjs": "^3.0.5",
     "@react3l/react3l": "^5.0.0-alpha.8",
     "antd": "^4.9.4",
