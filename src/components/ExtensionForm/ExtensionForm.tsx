@@ -1,9 +1,9 @@
 import Card from 'antd/lib/card';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
-import Button from 'antd/lib/button';
 import Tag from 'antd/lib/tag';
-import React, {FC, PropsWithChildren, ReactElement} from 'react';
+import type {FC, PropsWithChildren, ReactElement} from 'react';
+import React from 'react';
 import {identityService} from 'src/services/identity-service';
 import {browserService} from 'src/services/browser-service';
 import {licenseService} from 'src/services/license-service';
@@ -79,7 +79,7 @@ const ExtensionForm: FC<
               }%0D%0ABrowser%20ID%3A%20${
                 fingerprint ?? ''
               }%0D%0A%0D%0A%3CAttach%20your%20payment%20screenshot%20here%3E%0D%0A`}>
-              Submit
+              Request license
             </a>
           </Form.Item>
         )}

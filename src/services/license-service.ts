@@ -1,4 +1,4 @@
-import {License} from '@english-extension/models';
+import type {License} from '@english-extension/models';
 import firebase from 'src/config/firebase';
 import {localRepository} from 'src/repositories/local-repository';
 import {browserService} from 'src/services/browser-service';

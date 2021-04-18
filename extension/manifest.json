@@ -1,17 +1,18 @@
 {
   "manifest_version": 2,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "English Extension",
   "short_name": "English Extension",
   "description": "English Extension - A friend of English teachers",
-  "homepage_url": "https://thanhtunguet.info",
+  "homepage_url": "https://etsclass.ml",
   "permissions": [
     "https://dictionary.cambridge.org/**",
     "https://www.oxfordlearnersdictionaries.com/**",
     "identity",
     "identity.email",
     "notifications",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "content_scripts": [
     {
@@ -45,13 +46,13 @@
   },
   "web_accessible_resources": [
     "audio/*.mp3",
+    "background.html",
     "build/*.js",
     "build/*.js.map",
     "icons/*.png",
     "images/*.png",
     "libs/**/*",
-    "options.html",
-    "background.html"
+    "options.html"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval' https://essential-teaching-system.firebaseio.com; object-src 'self'"
 }

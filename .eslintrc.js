@@ -29,5 +29,11 @@ module.exports = {
     'no-useless-concat': 'error',
     semi: ['error', 'always'],
     'comma-dangle': ['error', 'always-multiline'],
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+      },
+    ],
   },
 };

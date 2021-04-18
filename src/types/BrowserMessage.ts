@@ -1,4 +1,4 @@
-import {ExtensionEvent} from 'src/types/ExtensionEvent';
+import type {ExtensionEvent} from 'src/types/ExtensionEvent';
 
 export interface BrowserMessage<T = any> {
   event: ExtensionEvent;

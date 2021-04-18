@@ -1,4 +1,5 @@
-import FingerprintJS, {Agent, GetResult} from '@fingerprintjs/fingerprintjs';
+import type {Agent, GetResult} from '@fingerprintjs/fingerprintjs';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 export class BrowserService {
   public async getFingerprint(): Promise<string> {
