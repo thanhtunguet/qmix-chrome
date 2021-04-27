@@ -23,8 +23,8 @@ export class NotificationService {
     this.createNotification(
       {
         type: 'basic',
-        title: 'Please sign-in',
-        message: 'Please sign in to your Google account to use this extension',
+        title: 'Bạn chưa đăng nhập',
+        message: 'Vui lòng đăng nhập bằng tài khoản Google để sử dụng phần mềm',
         iconUrl: chrome.extension.getURL('icons/ed-128x128.png'),
         isClickable: true,
       },
@@ -40,8 +40,9 @@ export class NotificationService {
     this.createNotification(
       {
         type: 'basic',
-        title: 'License not registered',
-        message: 'Please contact admin to acquire a license',
+        title: 'Phần mềm chưa được đăng ký',
+        message:
+          'Vui lòng liên hệ với admin để được hướng dẫn đăng ký sử dụng phần mềm',
         iconUrl: chrome.extension.getURL('icons/ed-128x128.png'),
         isClickable: true,
       },
@@ -55,7 +56,9 @@ export class NotificationService {
 
   public webInvalidLicense() {
     notification.error({
-      message: 'You don’t have any valid license',
+      message: 'Phần mềm chưa đăng ký',
+      description:
+        'Phần mềm bạn đang dùng chưa được đăng ký nên không thể sử dụng các tính năng của QMix',
     });
   }
 }

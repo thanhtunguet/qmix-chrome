@@ -1,5 +1,5 @@
 import type {ArgsProps, NotificationApi} from 'antd/lib/notification';
-import notification from 'antd/lib/notification';
+import {notification} from 'antd';
 import {ring} from 'src/helpers/audio';
 
 export class Notification implements Partial<NotificationApi> {

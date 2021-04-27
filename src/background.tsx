@@ -5,6 +5,7 @@ import {localRepository} from 'src/repositories/local-repository';
 import {globalState} from 'src/services/global-state';
 import {licenseService} from 'src/services/license-service';
 import {notificationService} from 'src/services/notification-service';
+import nameof from 'ts-nameof.macro';
 
 installNotice();
 

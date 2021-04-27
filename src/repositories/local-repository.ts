@@ -1,3 +1,5 @@
+import nameof from 'ts-nameof.macro';
+
 export class LocalRepository {
   public get isValid(): Promise<boolean> {
     return (

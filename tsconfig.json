@@ -23,6 +23,9 @@
       ],
       "package.json": [
         "./package.json"
+      ],
+      "manifest.json": [
+        "./extension/manifest.json"
       ]
     },
     "resolveJsonModule": true,
@@ -32,13 +35,14 @@
     ]
   },
   "exclude": [
-    "node_modules",
-    "extension",
-    ".idea",
     ".git",
+    ".idea",
+    "extension",
+    "node_modules",
     "README.md"
   ],
   "include": [
-    "src/"
+    "src/",
+    "extension/manifest.json"
   ]
 }

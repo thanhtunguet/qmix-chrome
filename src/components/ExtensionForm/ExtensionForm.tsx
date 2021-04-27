@@ -1,13 +1,14 @@
-import Card from 'antd/lib/card';
-import Form from 'antd/lib/form';
-import Input from 'antd/lib/input';
-import Tag from 'antd/lib/tag';
 import type {FC, PropsWithChildren, ReactElement} from 'react';
 import React from 'react';
 import {identityService} from 'src/services/identity-service';
 import {browserService} from 'src/services/browser-service';
 import {licenseService} from 'src/services/license-service';
 import './ExtensionForm.scss';
+import moment from 'moment';
+import type {License} from '@english-extension/models';
+import nameof from 'ts-nameof.macro';
+import {Card, Form, Input, Spin, Tag} from 'antd';
+import {name, homepage_url} from 'manifest.json';
 
 const layout = {
   labelCol: {span: 8},
@@ -33,6 +34,10 @@ const ExtensionForm: FC<
 
   const [licenseStatus, setLicenseStatus] = React.useState<boolean>();
 
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  const [license, setLicense] = React.useState<License>(null);
+
   React.useEffect(() => {
     identityService.getUserInfo().then((userInfo: chrome.identity.UserInfo) => {
       setUserInfo(userInfo);
@@ -41,50 +46,90 @@ const ExtensionForm: FC<
       setFingerprint(fingerprint);
     });
     licenseService
-      .checkLicenseStatus()
-      .then(() => {
+      .getLicenseStatus()
+      .then(async () => {
         setLicenseStatus(true);
+        const license: License = await licenseService.getLicense();
+        setLicense(license);
       })
       .catch(() => {
         setLicenseStatus(false);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
   return (
-    <Card title="English Extension">
-      <Form {...layout}>
-        <Form.Item label="User ID">
-          <Input disabled value={userInfo?.id} />
-        </Form.Item>
-        <Form.Item label="Email">
-          <Input disabled value={userInfo?.email} />
-        </Form.Item>
-        <Form.Item label="Browser ID">
-          <Input disabled value={fingerprint} />
-        </Form.Item>
-        <Form.Item label="License status">
-          <Tag color={licenseStatus ? 'green' : 'red'}>
-            {licenseStatus ? 'Valid' : 'Invalid'}
-          </Tag>
-        </Form.Item>
-        {!licenseStatus && (
-          <Form.Item {...tailLayout}>
-            <a
-              role="button"
-              className="ant-btn ant-btn-primary"
-              href={`mailto:thanhtung.uet@gmail.com?subject=English%20Extension%20license%20request&body=Email%3A%20${
-                userInfo?.email ?? ''
-              }%0D%0AUser%20ID%3A%20${
-                userInfo?.id ?? ''
-              }%0D%0ABrowser%20ID%3A%20${
-                fingerprint ?? ''
-              }%0D%0A%0D%0A%3CAttach%20your%20payment%20screenshot%20here%3E%0D%0A`}>
-              Request license
+    <Spin spinning={loading} tip="Đang lấy thông tin license">
+      <Card
+        title={
+          <>
+            <a href={homepage_url} target="_blank">
+              {name}
             </a>
+          </>
+        }>
+        <Form {...layout}>
+          {userInfo ? (
+            <>
+              <Form.Item label="ID">
+                <Input disabled value={userInfo?.id} />
+              </Form.Item>
+              <Form.Item label="Địa chỉ email">
+                <Input disabled value={userInfo?.email} />
+              </Form.Item>
+            </>
+          ) : (
+            <div className="text-center">
+              Vui lòng đăng nhập bằng tài khoản Google đã được đăng ký license
+              để có thể sử dụng phần mềm
+            </div>
+          )}
+          <Form.Item label="ID trình duyệt">
+            <Input disabled value={fingerprint} />
           </Form.Item>
-        )}
-      </Form>
-    </Card>
+          <Form.Item label="Trạng thái license">
+            <Tag color={licenseStatus ? 'green' : 'red'}>
+              {licenseStatus ? 'Hợp lệ' : 'Không hợp lệ'}
+            </Tag>
+          </Form.Item>
+          {license?.expiredAt && (
+            <Form.Item label="Ngày hết hạn">
+              <Tag color={licenseStatus ? 'green' : 'red'}>
+                {moment(license?.expiredAt).format('DD/MM/YYYY')}
+              </Tag>
+            </Form.Item>
+          )}
+          {!licenseStatus && (
+            <>
+              <Form.Item {...tailLayout}>
+                <a
+                  role="button"
+                  className="ant-btn ant-btn-primary"
+                  href={`mailto:tienganh.qmix@gmail.com?subject=English%20Extension%20license%20request&body=Email%3A%20${
+                    userInfo?.email ?? ''
+                  }%0D%0AUser%20ID%3A%20${
+                    userInfo?.id ?? ''
+                  }%0D%0ABrowser%20ID%3A%20${
+                    fingerprint ?? ''
+                  }%0D%0A%0D%0A%3CAttach%20your%20payment%20screenshot%20here%3E%0D%0A`}>
+                  Gửi mail yêu cầu
+                </a>
+              </Form.Item>
+            </>
+          )}
+          <div className="text-center font-italic">
+            Để sử dụng phần mềm, quý thầy cô vui lòng copy 3 dòng mã trên và gửi
+            về địa chỉ email
+            <a href="mailto:<tienganh.qmix@gmail.com>">
+              {' tienganh.qmix@gmail.com'}
+            </a>
+            .
+          </div>
+        </Form>
+      </Card>
+    </Spin>
   );
 };
 

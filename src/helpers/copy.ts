@@ -4,7 +4,7 @@ import notification from 'src/helpers/notification';
 export async function copy(text: string) {
   copyToClipboard(text);
   await notification.success({
-    message: 'Text copied',
+    message: 'Đã copy nội dung vào clipboard',
     description: text,
   });
 }
