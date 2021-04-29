@@ -8,7 +8,9 @@ import moment from 'moment';
 import type {License} from '@english-extension/models';
 import nameof from 'ts-nameof.macro';
 import {Card, Form, Input, Spin, Tag} from 'antd';
-import {name, homepage_url} from 'manifest.json';
+import manifest from 'manifest.json';
+
+const {name, homepage_url} = manifest;
 
 const layout = {
   labelCol: {span: 8},

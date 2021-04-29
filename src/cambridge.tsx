@@ -1,15 +1,28 @@
 import {CambridgeDictionary} from 'src/core/CambridgeDictionary';
 import {copy} from 'src/helpers/copy';
-import 'src/scss/cambridge.scss';
 import {licenseService} from 'src/services/license-service';
 import {notificationService} from 'src/services/notification-service';
+import * as $ from 'jquery';
+import 'src/scss/cambridge.scss';
 
 const cambridgeDictionary: CambridgeDictionary = new CambridgeDictionary();
 
-document.addEventListener('readystatechange', () => {
+$(document).ready(function () {
   licenseService
     .checkLicenseStatus()
     .then(() => {
+      /**
+       * Add download buttons for IPA
+       */
+      Object.values(document.getElementsByTagName('audio')).forEach(
+        (audioElement: HTMLAudioElement) => {
+          cambridgeDictionary.createIpaDownloadLink(
+            cambridgeDictionary.findIpaUrl(audioElement),
+            null,
+            audioElement.parentElement.parentElement,
+          );
+        },
+      );
       /**
        * Add copy event handler for IPA
        */
@@ -43,21 +56,11 @@ document.addEventListener('readystatechange', () => {
             await copy(text);
           });
 
+          button.classList.add('btn-copy');
+
           element.parentElement.appendChild(button);
         });
-
-      /**
-       * Add download buttons for IPA
-       */
-      Object.values(document.getElementsByTagName('audio')).forEach(
-        (audioElement: HTMLAudioElement) => {
-          cambridgeDictionary.createIpaDownloadLink(
-            cambridgeDictionary.findIpaUrl(audioElement),
-            null,
-            audioElement.parentElement.parentElement,
-          );
-        },
-      );
+      cambridgeDictionary.initializeTour();
     })
     .catch(() => {
       notificationService.webInvalidLicense();

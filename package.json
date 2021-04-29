@@ -1,27 +1,28 @@
 {
   "name": "qmix-dictionary",
   "description": "Phần mềm soạn giảng QMix, hỗ trợ soạn bài trên trình duyệt Chrome cho giáo viên Tiếng Anh",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "repository": {
-    "url": "git@github.com:thanhtunguet/english-dictionaries.git",
+    "url": "https://QMix@dev.azure.com/QMix/QMix/_git/extension",
     "type": "git"
   },
   "author": {
     "name": "Thanh Tùng",
     "email": "ht@thanhtunguet.info",
-    "url": "https://thanhtunguet.info"
+    "url": "https://thanhtunguet.github.io"
   },
   "private": true,
   "scripts": {
     "watch-ts": "NODE_ENV=development webpack --watch",
-    "build-ts": "NODE_ENV=production webpack",
+    "build-ts": "NODE_ENV=production  webpack",
     "start": "run-p watch-ts",
     "build": "run-s build-ts archive",
     "clean": "rm -rf extension/build/**",
     "prestart": "run-s clean",
-    "prepare": "run-s clean sync:version build",
-    "sync:version": "node sync-package.js",
+    "prepare": "run-s clean sync:version sync:libs",
+    "sync:version": "node scripts/sync-package.js",
+    "sync:libs": "./scripts/sync-libs.sh",
     "archive": "rm -rf dist/ && mkdir -p dist/ && zip dist/main.zip -r extension/"
   },
   "dependencies": {
@@ -34,12 +35,22 @@
     "build-url": "^6.0.1",
     "copy-to-clipboard": "^3.3.1",
     "firebase": "^8.3.0",
+    "i18next": "^20.2.2",
+    "jquery": "^3.6.0",
     "moment": "^2.29.1",
+    "popper.js": "^1.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-i18next": "^11.8.15",
     "react-router-dom": "^5.2.0",
+    "react3l-axios-observable": "^6.0.0-rc.1",
+    "react3l-common": "^6.0.0-rc.1",
+    "react3l-decorators": "^6.0.0-rc.1",
+    "react3l-localization": "^6.0.0-rc.1",
     "reactn": "^2.2.7",
-    "rxjs": "^6.6.3"
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.6.3",
+    "webtour": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
@@ -51,9 +62,9 @@
     "@babel/runtime": "^7.13.17",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react3l/cli": "^1.0.1",
+    "@types/bootstrap": "^5.0.13",
     "@types/chrome": "^0.0.127",
-    "@types/jest": "^26.0.19",
-    "@types/lodash": "^4.14.166",
+    "@types/jquery": "^3.5.5",
     "@types/node": "^12.7.4",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -67,10 +78,9 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react-hooks": "1.7.0",
     "file-loader": "^4.2.0",
     "javascript-obfuscator": "^2.10.1",
-    "jest": "^26.6.3",
     "node-sass": "~4",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
@@ -81,7 +91,6 @@
     "webpack": "^5",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.3.1",
-    "webpack-dev-server": "^3.11.2",
     "webpack-obfuscator": "^3.2.0"
   }
 }

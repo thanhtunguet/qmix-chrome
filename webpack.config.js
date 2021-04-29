@@ -1,41 +1,33 @@
-const {resolve} = require('path');
 const dotenv = require('dotenv');
-const webpack = require('webpack');
-const WebpackObfuscator = require('webpack-obfuscator');
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+const {EnvironmentPlugin} = require('webpack');
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const WebpackObfuscator = require('webpack-obfuscator');
 
 dotenv.config();
 
-const mode = process.env.NODE_ENV || 'development';
-
-let plugins = [new webpack.EnvironmentPlugin({})];
-
-if (process.env.NODE_ENV === 'development') {
-  plugins.push(new BundleAnalyzerPlugin());
-}
-
-if (mode !== 'development') {
-  plugins = [...plugins, new WebpackObfuscator({}, [])];
-}
-
 const srcPath = path.resolve(__dirname, 'src');
 
-module.exports = {
-  mode,
-  plugins,
-  externals: [],
-  devtool: mode === 'development' ? 'source-map' : false,
+const config = {
+  mode: process.env.NODE_ENV || 'development',
+  plugins: [new EnvironmentPlugin(['NODE_ENV'])],
   entry: {
+    background: path.join(srcPath, 'background.tsx'),
     cambridge: path.join(srcPath, 'cambridge.tsx'),
     oxford: path.join(srcPath, 'oxford.tsx'),
     options: path.join(srcPath, 'options.tsx'),
-    background: path.join(srcPath, 'background.tsx'),
   },
   output: {
-    path: resolve('extension', 'build'),
+    path: path.resolve('extension', 'build'),
     filename: '[name].js',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'],
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+      'manifest.json': path.resolve(__dirname, 'extension', 'manifest.json'),
+      'package.json': path.resolve(__dirname, 'package.json'),
+    },
   },
   module: {
     rules: [
@@ -56,12 +48,19 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'],
-    alias: {
-      src: resolve(__dirname, 'src'),
-      'package.json': resolve(__dirname, 'package.json'),
-      'manifest.json': resolve(__dirname, 'extension', 'manifest.json'),
-    },
+  externals: {
+    jquery: '$',
+    'popper.js': 'Popper',
   },
+  devtool: this.mode === 'development' ? 'source-map' : false,
 };
+
+if (process.env.NODE_ENV === 'development') {
+  config.plugins.push(new BundleAnalyzerPlugin());
+}
+
+if (config.mode !== 'development') {
+  config.plugins.push(new WebpackObfuscator({}, []));
+}
+
+module.exports = config;

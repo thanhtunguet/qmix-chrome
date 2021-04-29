@@ -1,8 +1,8 @@
 import {OxfordDictionary} from 'src/core/OxfordDictionary';
 import {copy} from 'src/helpers/copy';
-import 'src/scss/oxford.scss';
 import {licenseService} from 'src/services/license-service';
 import {notificationService} from 'src/services/notification-service';
+import 'src/scss/oxford.scss';
 
 const oxfordDictionary: OxfordDictionary = new OxfordDictionary();
 
@@ -34,6 +34,9 @@ document.addEventListener('readystatechange', () => {
             ipaButton.parentElement,
           );
         });
+      setTimeout(() => {
+        oxfordDictionary.initializeTour();
+      }, 300);
     })
     .catch(() => {
       notificationService.webInvalidLicense();

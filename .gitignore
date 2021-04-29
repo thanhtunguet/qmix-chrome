@@ -3,6 +3,7 @@ node_modules/
 build/
 dist/
 extension/build/
+extension/libs/
 .env
 yarn.lock
 yarn-error.log
