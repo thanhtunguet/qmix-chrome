@@ -5,9 +5,6 @@ module.exports = {
     '@babel/preset-typescript',
   ],
   plugins: [
-    'macros',
-    '@babel/plugin-transform-runtime',
-    ['@babel/plugin-proposal-class-properties', {loose: true}],
     [
       'import',
       {
@@ -15,5 +12,9 @@ module.exports = {
         style: 'css',
       },
     ],
+    'macros',
+    '@babel/plugin-transform-runtime',
+    ['@babel/plugin-proposal-class-properties', {loose: true}],
+    ['@babel/plugin-proposal-private-methods', {loose: true}],
   ],
 };
