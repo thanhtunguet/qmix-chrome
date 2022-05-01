@@ -40,12 +40,6 @@
       "css": []
     }
   ],
-  "background": {
-    "scripts": [
-      "build/background.js"
-    ]
-  },
-  "options_page": "options.html",
   "icons": {
     "16": "icons/ed-16x16.png",
     "32": "icons/ed-32x32.png",
