@@ -28,6 +28,3 @@ document
       ipaButton.parentElement,
     );
   });
-// setTimeout(() => {
-//   oxfordDictionary.initializeTour();
-// }, 300);

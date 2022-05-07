@@ -1,18 +1,13 @@
 {
   "manifest_version": 2,
-  "version": "1.0.5",
+  "version": "1.0.7",
   "name": "Phần mềm soạn giảng QMix",
   "short_name": "Phần mềm soạn giảng QMix",
   "description": "Phần mềm soạn giảng QMix, hỗ trợ soạn bài trên trình duyệt Chrome cho giáo viên Tiếng Anh",
   "homepage_url": "https://qmix.com.vn",
   "permissions": [
     "https://dictionary.cambridge.org/**",
-    "https://www.oxfordlearnersdictionaries.com/**",
-    "identity",
-    "identity.email",
-    "notifications",
-    "storage",
-    "tabs"
+    "https://www.oxfordlearnersdictionaries.com/**"
   ],
   "content_scripts": [
     {
