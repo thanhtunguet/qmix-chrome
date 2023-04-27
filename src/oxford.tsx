@@ -1,5 +1,7 @@
 import {OxfordDictionary} from 'src/core/OxfordDictionary';
 import {copy} from 'src/helpers/copy';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.min.css';
 import 'src/scss/oxford.scss';
 
 const oxfordDictionary: OxfordDictionary = new OxfordDictionary();

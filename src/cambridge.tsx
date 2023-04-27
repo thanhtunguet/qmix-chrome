@@ -1,5 +1,7 @@
 import {CambridgeDictionary} from 'src/core/CambridgeDictionary';
 import {copy} from 'src/helpers/copy';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.min.css';
 import 'src/scss/cambridge.scss';
 
 const cambridgeDictionary: CambridgeDictionary = new CambridgeDictionary();
@@ -9,6 +11,7 @@ const cambridgeDictionary: CambridgeDictionary = new CambridgeDictionary();
  */
 Object.values(document.getElementsByTagName('audio')).forEach(
   (audioElement: HTMLAudioElement) => {
+    debugger;
     cambridgeDictionary.createIpaDownloadLink(
       cambridgeDictionary.findIpaUrl(audioElement),
       null,

@@ -1,5 +1,6 @@
 import {AbstractDictionary} from 'src/core/AbstractDictionary';
 import WebTour from 'webtour';
+
 export class OxfordDictionary extends AbstractDictionary {
   public createTour() {
     const wt = new WebTour();

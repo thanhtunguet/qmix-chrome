@@ -1,10 +1,18 @@
 import {AbstractDictionary} from 'src/core/AbstractDictionary';
+// @ts-ignore
 import WebTour from 'webtour';
+
 export class CambridgeDictionary extends AbstractDictionary {
   public findIpaUrl(audioElement: HTMLAudioElement) {
-    const mp3Source: HTMLSourceElement = audioElement
-      .children[0] as HTMLSourceElement;
-    return mp3Source.src;
+    audioElement.childNodes.forEach((node: ChildNode) => {
+      if (node.nodeName === 'SOURCE') {
+        const sourceNode = node as HTMLSourceElement;
+        if (sourceNode.src.endsWith('.mp3')) {
+          return sourceNode.src;
+        }
+      }
+    });
+    return null;
   }
 
   public createCopyButton(): HTMLButtonElement {

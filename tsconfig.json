@@ -4,19 +4,19 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "emitDecoratorMetadata": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "inlineSourceMap": true,
-    "isolatedModules": false,
-    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "jsx": "react",
     "lib": [
       "DOM",
       "DOM.Iterable",
       "ESNext"
     ],
     "module": "ESNext",
-    "moduleResolution": "node",
-    "outDir": "extension/build",
+    "moduleResolution": "NodeNext",
+    "outDir": "dist",
     "paths": {
       "src/*": [
         "./src/*"
@@ -29,20 +29,19 @@
       ]
     },
     "resolveJsonModule": true,
-    "target": "ES5",
-    "typeRoots": [
-      "./node_modules/@types/"
-    ]
+    "strict": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "alwaysStrict": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "target": "ESNext"
   },
   "exclude": [
     ".git",
     ".idea",
-    "extension",
+    "dist",
     "node_modules",
     "README.md"
-  ],
-  "include": [
-    "src/",
-    "extension/manifest.json"
   ]
 }

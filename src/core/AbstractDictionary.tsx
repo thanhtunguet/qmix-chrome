@@ -1,7 +1,7 @@
 import CloudDownloadOutlined from '@ant-design/icons/CloudDownloadOutlined';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import type WebTour from 'webtour';
+import {render} from 'react-dom';
 
 export abstract class AbstractDictionary {
   public abstract findIpaUrl(element: HTMLElement);
@@ -27,7 +27,7 @@ export abstract class AbstractDictionary {
       rootElement.append(a);
     }
 
-    ReactDOM.render(<CloudDownloadOutlined />, a);
+    render(<CloudDownloadOutlined />, a);
 
     return a;
   }

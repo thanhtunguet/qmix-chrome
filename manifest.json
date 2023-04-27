@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "version": "2.0.0",
+  "name": "Phần mềm soạn giảng QMix",
+  "short_name": "Phần mềm soạn giảng QMix",
+  "description": "Phần mềm soạn giảng QMix, hỗ trợ soạn bài trên trình duyệt Chrome cho giáo viên Tiếng Anh",
+  "homepage_url": "https://qmix-projects.web.app",
+  "host_permissions": [
+    "https://dictionary.cambridge.org/*",
+    "https://www.oxfordlearnersdictionaries.com/*"
+  ],
+  "permissions": [
+    "activeTab",
+    "cookies",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://dictionary.cambridge.org/*"
+      ],
+      "js": [
+        "./src/cambridge.tsx"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.oxfordlearnersdictionaries.com/*"
+      ],
+      "js": [
+        "./src/oxford.tsx"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "./src/icons/ed-16x16.png",
+    "32": "./src/icons/ed-32x32.png",
+    "48": "./src/icons/ed-48x48.png",
+    "128": "./src/icons/ed-128x128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "./src/**/*.mp3",
+        "./src/*/*.png",
+        "./src/**/*.{ts,tsx}",
+        "./src/*.html"
+      ],
+      "matches": []
+    }
+  ]
+}
