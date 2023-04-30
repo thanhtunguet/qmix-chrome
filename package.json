@@ -1,7 +1,7 @@
 {
   "name": "qmix-dictionary",
   "description": "Phần mềm soạn giảng QMix, hỗ trợ soạn bài trên trình duyệt Chrome cho giáo viên Tiếng Anh",
-  "version": "1.0.7",
+  "version": "2.0.1",
   "license": "MIT",
   "repository": {
     "url": "https://QMix@dev.azure.com/QMix/QMix/_git/extension",

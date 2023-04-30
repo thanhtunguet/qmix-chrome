@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "name": "Phần mềm soạn giảng QMix",
   "short_name": "Phần mềm soạn giảng QMix",
   "description": "Phần mềm soạn giảng QMix, hỗ trợ soạn bài trên trình duyệt Chrome cho giáo viên Tiếng Anh",
@@ -10,9 +10,7 @@
     "https://www.oxfordlearnersdictionaries.com/*"
   ],
   "permissions": [
-    "activeTab",
-    "cookies",
-    "storage"
+    "activeTab"
   ],
   "content_scripts": [
     {
