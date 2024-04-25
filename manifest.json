@@ -15,7 +15,10 @@
         "https://dictionary.cambridge.org/*"
       ],
       "js": [
-        "./src/cambridge.tsx"
+        "./dist/cambridge.js"
+      ],
+      "css": [
+        "./dist/styles/cambridge.css"
       ]
     },
     {
@@ -23,7 +26,10 @@
         "https://www.oxfordlearnersdictionaries.com/*"
       ],
       "js": [
-        "./src/oxford.tsx"
+        "./dist/oxford.js"
+      ],
+      "css": [
+        "./dist/styles/oxford.css"
       ]
     }
   ],
@@ -36,7 +42,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "src/**"
+        "src/**",
+        "dist/**"
       ],
       "matches": [
         "https://dictionary.cambridge.org/*",
