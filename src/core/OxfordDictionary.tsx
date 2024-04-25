@@ -6,10 +6,10 @@ export class OxfordDictionary extends AbstractDictionary {
     const wt = new WebTour();
     const steps = [
       {
-        element: 'h1.headword', //target element (if not defined then the popover will act like a modal at the center of the screen)
-        title: 'Sao chép từ', //this is option if you don't want to add title
-        content: 'Bấm vào để sao chép từ', //can be string or html string
-        placement: 'right-start', //top, top-start, top-end, left, left-start, left-end, right, right-start, right-end, bottom, bottom-start, bottom-end
+        element: 'h1.headword', // target element (if not defined then the popover will act like a modal at the center of the screen)
+        title: 'Sao chép từ', // this is option if you don't want to add title
+        content: 'Bấm vào để sao chép từ', // can be string or html string
+        placement: 'right-start', // top, top-start, top-end, left, left-start, left-end, right, right-start, right-end, bottom, bottom-start, bottom-end
       },
       {
         element: '.phon',
@@ -34,11 +34,7 @@ export class OxfordDictionary extends AbstractDictionary {
     return wt;
   }
 
-  public findIpaUrl(ipaButton: HTMLSpanElement) {
+  public findIpaUrl(ipaButton: Element) {
     return ipaButton.getAttribute('data-src-mp3');
-  }
-
-  public shouldOpenTour(): boolean {
-    return window.location.pathname.startsWith('/definition/english');
   }
 }

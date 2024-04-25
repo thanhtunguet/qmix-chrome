@@ -1,17 +1,16 @@
 import {AbstractDictionary} from 'src/core/AbstractDictionary';
-// @ts-ignore
 import WebTour from 'webtour';
 
 export class CambridgeDictionary extends AbstractDictionary {
   public findIpaUrl(audioElement: HTMLAudioElement) {
-    audioElement.childNodes.forEach((node: ChildNode) => {
+    for (const node of audioElement.children) {
       if (node.nodeName === 'SOURCE') {
         const sourceNode = node as HTMLSourceElement;
-        if (sourceNode.src.endsWith('.mp3')) {
-          return sourceNode.src;
+        if (sourceNode.getAttribute('type') === 'audio/mpeg') {
+          return sourceNode.getAttribute('src');
         }
       }
-    });
+    }
     return null;
   }
 
@@ -55,9 +54,5 @@ export class CambridgeDictionary extends AbstractDictionary {
     ];
     wt.setSteps(steps);
     return wt;
-  }
-
-  public shouldOpenTour(): boolean {
-    return window.location.pathname.startsWith('/dictionary/english');
   }
 }

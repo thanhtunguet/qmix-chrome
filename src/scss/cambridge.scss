@@ -1,14 +1,23 @@
-.ipa,
-.hw {
-  cursor: pointer;
-}
+@import "core";
 
-iframe {
+@mixin hidden() {
   display: none;
   visibility: hidden;
 }
 
-#rightcol-ar2 {
-  display: none !important;
-  visibility: hidden !important;
+.hdn.hdb-m.hfl-m {
+  @include hidden;
+}
+
+.hfr-s.lt2s.lmt-10 {
+  @include hidden;
+}
+
+.am-default_moreslots  {
+  @include hidden;
+}
+
+.ipa,
+.hw {
+  cursor: pointer;
 }

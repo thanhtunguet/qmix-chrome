@@ -9,11 +9,7 @@
     "https://dictionary.cambridge.org/*",
     "https://www.oxfordlearnersdictionaries.com/*"
   ],
-  "permissions": [
-    "activeTab",
-    "cookies",
-    "storage"
-  ],
+
   "content_scripts": [
     {
       "matches": [
@@ -41,12 +37,12 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "./src/**/*.mp3",
-        "./src/*/*.png",
-        "./src/**/*.{ts,tsx}",
-        "./src/*.html"
+        "src/**"
       ],
-      "matches": []
+      "matches": [
+        "https://dictionary.cambridge.org/*",
+        "https://www.oxfordlearnersdictionaries.com/*"
+      ]
     }
   ]
 }
